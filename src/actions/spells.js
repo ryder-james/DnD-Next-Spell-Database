@@ -15,7 +15,8 @@ export function fetchSpellFromURL(URL) {
                 })
             })
             .catch(err => {
-                console.log(err);
+                console.log("Failed to fetch spell list,", err);
+                console.log("Fetching hard-coded example list")
                 dispatch(fetchHardSpellList());
             })
     }
