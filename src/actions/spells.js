@@ -90,6 +90,51 @@ export function fetchSpellList() {
                     }
                 ],
                 "url": "http://www.dnd5eapi.co/api/spells/2"
+            },
+            {
+                "_id": "5a52bc3a559f00418e532f2f",
+                "index": 3,
+                "name": "Aid",
+                "desc": [
+                    "Your spell bolsters your allies with toughness and resolve. Choose up to three creatures within range. Each targetâ€™s hit point maximum and current hit points increase by 5 for the duration."
+                ],
+                "higher_level": [
+                    "When you cast this spell using a spell slot of 3rd level or higher, a targetâ€™s hit points increase by an additional 5 for each slot level above 2nd."
+                ],
+                "page": "phb 211",
+                "range": "30 feet",
+                "components": [
+                    "V",
+                    "S",
+                    "M"
+                ],
+                "material": "A tiny strip of white cloth.",
+                "ritual": "no",
+                "duration": "8 hours",
+                "concentration": "no",
+                "casting_time": "1 action",
+                "level": 2,
+                "school": {
+                    "url": "http://www.dnd5eapi.co/api/magic-schools/1",
+                    "name": "Abjuration"
+                },
+                "classes": [
+                    {
+                        "name": "Cleric",
+                        "url": "http://www.dnd5eapi.co/api/classes/3"
+                    },
+                    {
+                        "name": "Paladin",
+                        "url": "http://www.dnd5eapi.co/api/classes/7"
+                    }
+                ],
+                "subclasses": [
+                    {
+                        "url": "http://www.dnd5eapi.co/api/subclasses/2",
+                        "name": "Lore"
+                    }
+                ],
+                "url": "http://www.dnd5eapi.co/api/spells/3"
             }
         ]
     }
