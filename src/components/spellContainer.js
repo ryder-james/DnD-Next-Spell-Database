@@ -14,9 +14,9 @@ class SpellContainer extends Component {
         return (
             <div className="spell-container">
                 {
-                    this.props.spellList.map(spellItem => {
-                        return <SpellItem {...spellItem} key={spellItem._id}/>
-                    }) 
+                    // this.props.spellList.map(spellItem => {
+                    //     return <SpellItem {...spellItem} key={spellItem._id}/>
+                    // }) 
                 }
             </div>
         );
@@ -26,10 +26,10 @@ class SpellContainer extends Component {
 function mapStateToProps(state) {
     console.log(state);
 
-    const { spellList } = state.spellList;
+    // const { spellList } = state.spellList;
 
     return {
-        spellList
+        // spellList
     }
 }
 
