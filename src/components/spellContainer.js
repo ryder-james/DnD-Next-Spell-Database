@@ -7,18 +7,21 @@ import SpellItem from './spellItem';
 import ScrollButton from './scrollButton';
 
 class SpellContainer extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            spellList: []
+    getSpellArray() {
+        if (this.props.spellList.length == 0) {
+            return [];
         }
+        console.log("getting spell array")
+
+        const spellArray = [];
+        this.props.spellList.map(() => {
+            spellArray.push(<SpellItem/>);
+        })
+        return spellArray;
     }
 
     componentDidMount() {
         this.props.fetchSpellList();
-
-        console.log(fetch("http://dnd5eapi.co/api/spells/", { headers: { "Content-Type": "application/json" } }));
     }
 
     render() {
@@ -27,9 +30,7 @@ class SpellContainer extends Component {
                 <div className="spell-container__list">
                     <ScrollButton isScrollUp={true} callback={() => console.log("Scrolling up")}/>
                     {
-                        this.props.spellList.map(spellItem => {
-                            return <SpellItem {...spellItem} key={spellItem._id}/>
-                        }) 
+                        this.getSpellArray()
                     }
                     <ScrollButton isScrollUp={false} callback={() => console.log("Scrolling down")}/>
                 </div>

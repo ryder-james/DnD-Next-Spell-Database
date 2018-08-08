@@ -4,7 +4,8 @@ class Header extends Component {
     render() {
         return (
             <div className="header">
-                <img className="header__img" src="https://i.imgur.com/k7jAoH3.png"></img>
+                {/* <img className="header__img" src="https://i.imgur.com/k7jAoH3.png"/> */}
+                <i className="header__icon fab fa-d-and-d"/>
                 <input className="header__search" type="text" placeholder="Search Spells..."/>
                 {this.props.children}
             </div>

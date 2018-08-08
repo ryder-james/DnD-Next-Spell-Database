@@ -10,15 +10,25 @@
     flex-direction: row;
     align-items: center;
 
-    &__img,
+    &__icon,
     &__search {
         margin: 0.5rem 0 0.5rem 1rem;
     }
 
-    &__img {
-        height: 80%;
+    &__icon {
+        height: 4.2rem;
+        width: 4.2rem;
+
+        background: black;
+
+        color: $main-red;
+        font-size: 4rem;
 
         border-radius: 10rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__search {

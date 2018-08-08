@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
 class SpellItem extends Component {
     render() {
         const {
-            name, 
-            desc, 
-            higher_level, 
-            range, 
-            components, 
-            material, 
-            ritual,
-            duration, 
-            concentration, 
-            casting_time, 
-            level, 
-            school, 
-            classes, 
-            subclasses, 
-            url
+            name,
+            school
         } = this.props;
 
         const icons = {
@@ -70,5 +59,4 @@ class SpellItem extends Component {
         );
     }
 }
-
 export default SpellItem;

@@ -1,10 +1,43 @@
 import {
-    FETCH_SPELLS
+    FETCH_SPELLS,
+    FETCH_SPELL_URL
 } from './types';
 
 import axios from 'axios';
 
-export function fetchSpellList() {
+export function fetchSpellFromURL(URL) {
+    return function (dispatch) {
+        axios.get(URL)
+            .then(response => {
+                dispatch({
+                    type: FETCH_SPELL_URL,
+                    payload: response.data
+                })
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch(fetchHardSpellList());
+            })
+    }
+}
+
+export function fetchSpellList(endpoint = "spells", query) {
+    return function (dispatch) {
+        axios.get(`http://www.dnd5eapi.co/api/${endpoint}/${query ? `?=${query}` : ""}`)
+            .then(response => {
+                dispatch({
+                    type: FETCH_SPELLS,
+                    payload: response.data
+                })
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch(fetchHardSpellList());
+            })
+    }
+}
+
+function fetchHardSpellList() {
     const response = {
         data: [
             {
@@ -371,24 +404,6 @@ export function fetchSpellList() {
         payload: response.data
     }
 }
-
-// export function fetchSpellList() {
-//     let result = "";
-//     axios.get("http://dnd5eapi.co/api/spells", {
-//         headers: localStorage.getItem("token")
-//     })
-//         .then(response => {
-//             console.log(response.data);
-//             result = response;
-//         })
-//         .catch(err => {
-//             console.log(err);
-//         })
-//     return {
-//         type: FETCH_SPELLS,
-//         payload: result.data
-//     }
-// }
 
 // export function fetchSpellList() {
 //     return {
