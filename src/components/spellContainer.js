@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import SpellItem from './spellItem';
+import ScrollButton from './scrollButton';
 
 class SpellContainer extends Component {
     constructor() {
@@ -22,11 +23,13 @@ class SpellContainer extends Component {
         return (
             <div className="spell-container">
                 <div className="spell-container__list">
+                    <ScrollButton isScrollUp={true} callback={() => console.log("Scrolling up")}/>
                     {
                         this.props.spellList.map(spellItem => {
                             return <SpellItem {...spellItem} key={spellItem._id}/>
                         }) 
                     }
+                    <ScrollButton isScrollUp={false} callback={() => console.log("Scrolling down")}/>
                 </div>
             </div>
         );
