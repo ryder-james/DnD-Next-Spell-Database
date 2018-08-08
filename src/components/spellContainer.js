@@ -21,11 +21,13 @@ class SpellContainer extends Component {
     render() {
         return (
             <div className="spell-container">
-                {
-                    this.props.spellList.map(spellItem => {
-                        return <SpellItem {...spellItem} key={spellItem._id}/>
-                    }) 
-                }
+                <div className="spell-container__list">
+                    {
+                        this.props.spellList.map(spellItem => {
+                            return <SpellItem {...spellItem} key={spellItem._id}/>
+                        }) 
+                    }
+                </div>
             </div>
         );
     }

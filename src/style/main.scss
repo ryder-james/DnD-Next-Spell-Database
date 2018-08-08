@@ -1,4 +1,7 @@
 @import 'var';
 @import 'base';
 
+@import './components/layout';
 @import './components/header';
+@import './components/spell-container';
+@import './components/spell-item';
