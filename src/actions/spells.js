@@ -59,7 +59,7 @@ import axios from 'axios';
         return function (dispatch) {
             const token = localStorage.getItem("token");
             const headers = { headers: { authorization: token } }
-            axios.get("http://dnd5eapi.co/api/spells", headers)
+            axios.get("https://dnd5eapi.co/api/spells", headers)
                 .then(response => {
                     dispatch({
                         type: FETCH_SPELLS,
