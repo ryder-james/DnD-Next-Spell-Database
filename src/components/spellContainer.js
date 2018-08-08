@@ -17,6 +17,8 @@ class SpellContainer extends Component {
 
     componentDidMount() {
         this.props.fetchSpellList();
+
+        console.log(fetch("http://dnd5eapi.co/api/spells/", { headers: { "Content-Type": "application/json" } }));
     }
 
     render() {
