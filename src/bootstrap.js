@@ -11,10 +11,15 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 import 'bootstrap/dist/css/bootstrap.css';
 import './style/main.scss';
 
+import Layout from './components/layout';
+import SpellContainer from './components/spellContainer';
+
 function main() {
   ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
-      <App />
+      <Layout>
+        <SpellContainer/>
+      </Layout>
     </Provider>
     , document.querySelector('.app-wrapper'));
 }

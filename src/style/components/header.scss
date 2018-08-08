@@ -1,0 +1,36 @@
+.header {
+    height: 5rem;
+
+    background: $main-red;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &__img,
+    &__search {
+        margin: 0.5rem 0 0.5rem 1rem;
+    }
+
+    &__img {
+        height: 80%;
+
+        border-radius: 10rem;
+    }
+
+    &__search {
+        height: 2.5rem;
+        width: 30%;
+
+        font-size: 2rem;
+        font-family: $main-font;
+
+        border: 0.1rem solid black;
+        border-radius: 0.3rem;
+
+        padding: 0.5rem;
+
+        display: flex;
+        justify-content: center;
+    }
+}

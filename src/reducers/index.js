@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
+import spellList from './spellsReducer';
+
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  spellList
 });
 
 export default rootReducer;
