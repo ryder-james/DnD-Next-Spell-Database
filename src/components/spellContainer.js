@@ -27,13 +27,13 @@ class SpellContainer extends Component {
     render() {
         return (
             <div className="spell-container">
+                <ScrollButton isScrollUp={true} callback={() => console.log("Scrolling up")}/>
                 <div className="spell-container__list">
-                    <ScrollButton isScrollUp={true} callback={() => console.log("Scrolling up")}/>
                     {
                         this.getSpellArray()
                     }
-                    <ScrollButton isScrollUp={false} callback={() => console.log("Scrolling down")}/>
                 </div>
+                <ScrollButton isScrollUp={false} callback={() => console.log("Scrolling down")}/>
             </div>
         );
     }
