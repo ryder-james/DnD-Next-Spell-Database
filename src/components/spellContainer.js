@@ -11,12 +11,12 @@ class SpellContainer extends Component {
         if (this.props.spellList.length == 0) {
             return [];
         }
-        console.log("getting spell array")
 
         const spellArray = [];
-        this.props.spellList.map(() => {
-            spellArray.push(<SpellItem/>);
+        this.props.spellList.map((spellItem, index) => {
+            spellArray.push(<SpellItem url={spellItem.url}/>);
         })
+
         return spellArray;
     }
 
@@ -40,10 +40,11 @@ class SpellContainer extends Component {
 }
 
 function mapStateToProps(state) {
-    const { spellList } = state.spellList;
+    const { spellList, requestedSpell } = state.spellList;
 
     return {
-        spellList
+        spellList,
+        requestedSpell
     }
 }
 

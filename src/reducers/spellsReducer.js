@@ -1,6 +1,5 @@
 import {
-    FETCH_SPELLS,
-    FETCH_SPELL_URL
+    FETCH_SPELLS
 } from '../actions/types'
 
 const INIT_STATE = {
@@ -15,12 +14,6 @@ export default function(state = INIT_STATE, action) {
             return {
                 ...state,
                 spellList
-            }
-        case FETCH_SPELL_URL:
-            const requestedSpell = action.payload;
-            return {
-                ...state,
-                requestedSpell
             }
         default:
             return state;

@@ -1,26 +1,8 @@
 import {
-    FETCH_SPELLS,
-    FETCH_SPELL_URL
+    FETCH_SPELLS
 } from './types';
 
 import axios from 'axios';
-
-export function fetchSpellFromURL(URL) {
-    return function (dispatch) {
-        axios.get(URL)
-            .then(response => {
-                dispatch({
-                    type: FETCH_SPELL_URL,
-                    payload: response.data
-                })
-            })
-            .catch(err => {
-                console.log("Failed to fetch spell list,", err);
-                console.log("Fetching hard-coded example list")
-                dispatch(fetchHardSpellList());
-            })
-    }
-}
 
 export function fetchSpellList(endpoint = "spells", query) {
     return function (dispatch) {

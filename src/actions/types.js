@@ -1,2 +1,1 @@
 export const FETCH_SPELLS = "FETCH_SPELLS";
-export const FETCH_SPELL_URL = "FETCH_SPELL_URL";
