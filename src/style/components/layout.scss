@@ -1,5 +1,5 @@
 .layout {
     display: grid;
-    grid-template-columns: [page-s] 5rem [content-s container-s] 1fr [container-e detail-s] 3fr [detail-e content-e] 5rem [page-e];
+    grid-template-columns: [page-s] 5rem [content-s container-s] minmax(30rem, 1fr) [container-e detail-s] 3fr [detail-e content-e] 5rem [page-e];
     grid-template-rows: [page-s bar-s] 5rem [bar-e content-s] 1fr [content-e page-e];
 }
