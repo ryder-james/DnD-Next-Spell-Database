@@ -9,7 +9,7 @@ import {
 
 import axios from 'axios';
 
-export function fetchSpellList(endpoint = "spells", query) {
+export function fetchSpellList(query, endpoint = "spells") {
     query ? query = queryEditor(query) : "";
 
     const url = `http://www.dnd5eapi.co/api/${endpoint}/${query ? `?name=${query}` : ""}`;
