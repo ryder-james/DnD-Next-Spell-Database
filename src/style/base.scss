@@ -9,3 +9,7 @@ html {
         box-sizing: inherit;
     }
 }
+
+::-webkit-scrollbar {
+    width: 0px;
+}

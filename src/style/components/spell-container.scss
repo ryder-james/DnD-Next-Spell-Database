@@ -4,10 +4,12 @@
 
     display: grid;
     grid-template-columns: [s] 1fr [e];
-    grid-template-rows: [s up-s] 1rem [up-e list-s] repeat(2, 3rem) [list-e down-s] 1rem [down-e e];
+    grid-template-rows: [s up-s] 4rem [up-e list-s] minmax(15rem, 70rem) [list-e down-s] 4rem [down-e e];
     justify-content: center;
 
     &__list {
         grid-row: list-s/list-e;
+
+        overflow: auto;
     }
 }
