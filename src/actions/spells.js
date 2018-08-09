@@ -12,7 +12,7 @@ import axios from 'axios';
 export function fetchSpellList(endpoint = "spells", query) {
     query ? query = queryEditor(query) : "";
 
-    const url = `http://www.dnd5eapi.co/api/${endpoint}/${query ? `?name=${query}` : ""}`;
+    const url = `https://www.dnd5eapi.co/api/${endpoint}/${query ? `?name=${query}` : ""}`;
     console.log(url);
 
     return function (dispatch) {
