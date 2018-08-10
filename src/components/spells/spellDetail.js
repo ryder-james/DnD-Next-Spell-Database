@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
 import axios from 'axios';
 
 class SpellDetail extends Component {
@@ -56,13 +54,23 @@ class SpellDetail extends Component {
 
 
     componentDidMount() {
-        axios.get("http://www.dnd5eapi.co/api/spells/1")
+        if (!this.props.selectedSpell) {
+            return;
+        }
+
+        axios.get(this.props.selectedSpell)
             .then(response => {
                 this.setState({ spell: { ...response.data } })
             })
     }
 
     render() {
+        if (!this.props.selectedSpell) {
+            return (
+                <div className="spell-detail-none"> No spell selected. Click one on the left to start!</div>
+            )
+        }
+
         if (!this.state.spell) {
             return (
                 <div className="spell-detail">
@@ -84,8 +92,6 @@ class SpellDetail extends Component {
         }
 
         const spell = { ...this.state.spell };
-
-        console.log(spell);
 
         return (
             <div className="spell-detail">
@@ -113,8 +119,4 @@ class SpellDetail extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return state;
-}
-
-export default connect(mapStateToProps, actions)(SpellDetail);
+export default SpellDetail;

@@ -36,17 +36,17 @@ class SpellContainer extends Component {
                 </div>
                 <ScrollButton isScrollUp={false} callback={() => console.log("Scrolling down")}/>
             </div>,
-            <SpellDetail/>
+            <SpellDetail selectedSpell={this.props.selectedSpell} key={this.props.selectedSpell}/>
         ];
     }
 }
 
 function mapStateToProps(state) {
-    const { spellList, requestedSpell } = state.spellList;
+    const { spellList, selectedSpell } = state.spellList;
 
     return {
         spellList,
-        requestedSpell
+        selectedSpell
     }
 }
 
