@@ -32,12 +32,17 @@ class SpellItem extends Component {
                 </div>
             )
         }
+
+        let active = false
+
+        if (this.props.url == this.props.selectedSpell) {
+            active = true;
+        }
+
         const {
             name,
             school
         } = this.state.spell;
-
-        const { active } = this.props;
 
         const icons = {
             abjuration: "fas fa-shield-alt",
@@ -80,7 +85,7 @@ class SpellItem extends Component {
         }
 
         return (
-            <a onClick={() => console.log({ name }, "detail view clicked")} className="spell-item-wrapper">
+            <a onClick={() => this.props.changeSelectedSpell(this.props.url)} className="spell-item-wrapper">
                 <div className={`spell-item ${active ? "active" : ""}`}>
                     <i className={`spell-item__icon  ${active ? "active__icon" : ""} ${icon}`} />
                     <div className="spell-item__name">{name}</div>
@@ -93,10 +98,10 @@ class SpellItem extends Component {
 }
 
 function mapStateToProps(state) {
-    const { requestedSpell } = state.spellList;
+    const { selectedSpell } = state.spellList;
 
     return {
-        requestedSpell
+        selectedSpell
     }
 }
 
