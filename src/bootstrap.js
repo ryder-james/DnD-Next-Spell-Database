@@ -13,14 +13,12 @@ import './style/main.scss';
 
 import Layout from './components/layout';
 import SpellContainer from './components/spells/spellContainer';
-import SpellDetail from './components/spells/spellDetail';
 
 function main() {
   ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
       <Layout>
         <SpellContainer/>
-        <SpellDetail/>
       </Layout>
     </Provider>
     , document.querySelector('.app-wrapper'));

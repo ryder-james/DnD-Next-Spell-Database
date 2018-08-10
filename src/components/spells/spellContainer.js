@@ -5,6 +5,7 @@ import * as actions from '../../actions';
 
 import SpellItem from './spellItem';
 import ScrollButton from '../scrollButton';
+import SpellDetail from './spellDetail';
 
 class SpellContainer extends Component {
     getSpellArray() {
@@ -25,7 +26,7 @@ class SpellContainer extends Component {
     }
 
     render() {
-        return (
+        return [
             <div className="spell-container">
                 <ScrollButton isScrollUp={true} callback={() => console.log("Scrolling up")}/>
                 <div className="spell-container__list">
@@ -34,8 +35,9 @@ class SpellContainer extends Component {
                     }
                 </div>
                 <ScrollButton isScrollUp={false} callback={() => console.log("Scrolling down")}/>
-            </div>
-        );
+            </div>,
+            <SpellDetail/>
+        ];
     }
 }
 
