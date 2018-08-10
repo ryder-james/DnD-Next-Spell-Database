@@ -14,7 +14,7 @@ class SpellContainer extends Component {
 
         const spellArray = [];
         this.props.spellList.map((spellItem, index) => {
-            spellArray.push(<SpellItem url={spellItem.url} key={index} active={index == 3 ? true : false}/>);
+            spellArray.push(<SpellItem url={spellItem.url} key={index} active={index == 0 ? true : false}/>);
         })
 
         return spellArray;

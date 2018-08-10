@@ -91,7 +91,7 @@ class SpellDetail extends Component {
             <div className="spell-detail">
                 <div className="spell-detail__name">{spell.name}</div>
                 <div className="spell-detail__wrapper">
-                    <div className="spell-detail__wrapper__level">{this.levelToString(spell.level)} level {spell.school.name}</div>
+                    <div className="spell-detail__wrapper__level"><i>{this.levelToString(spell.level)} level {spell.school.name}</i></div>
                     <div className="spell-detail__wrapper__cast-time"><b>Casting Time: </b>{spell.casting_time}</div>
                     <div className="spell-detail__wrapper__range"><b>Range: </b>{spell.range}</div>
                     <div className="spell-detail__wrapper__components"><b>Components: </b>{this.componentListToString(spell.components)}</div>
@@ -100,7 +100,13 @@ class SpellDetail extends Component {
                 </div>
                 <div className="spell-detail__desc-wrapper">
                     <div className="spell-detail__desc-wrapper__description">{spell.desc}</div>
-                    <div className="spell-detail__desc-wrapper__higher-levels"><b>At Higher Levels: </b>{spell.higher_level}</div>
+                    {
+                        spell.higher_level ?
+                            <div className="spell-detail__desc-wrapper__higher-levels">
+                                <b>At Higher Levels: </b>{spell.higher_level}
+                            </div>
+                            : ""
+                    }
                 </div>
             </div>
         );

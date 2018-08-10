@@ -1,4 +1,34 @@
 .spell-detail {
     grid-column: detail-s/detail-e;
-    grid-row: content-s/content-e;
+    grid-row: detail-s/detail-e;
+
+    font-family: $sub-font;
+    text-align: right;
+
+    border: 2px solid black;
+    border-left: none;
+
+    display: grid;
+    grid-template-rows: [name-s] 5rem [name-e casting-s] 15rem [casting-e desc-s] 1fr [desc-e];
+    justify-content: end;
+
+    &__name {
+        width: 100%;
+
+        font-size:4rem;
+        font-family: $main-font;
+
+        border-bottom: 2px solid black;
+    }
+
+    &__wrapper {
+        font-size: 1.7rem;
+        font-family: $sub-font;
+
+        border-bottom: 2px solid black;
+    }
+
+    &__desc-wrapper {
+        font-size: 3rem;
+    }
 }
