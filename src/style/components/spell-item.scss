@@ -2,7 +2,7 @@
     height: 5rem;
     width: 100%;
 
-    font-size: 2rem;
+    font-size: 1.85rem;
     font-family: $main-font;
 
     border: 0px solid black;
@@ -50,6 +50,7 @@
     background: $main-red;
 
     color: white;
+    border-color: $main-red;
 
     &__icon {
         background: white;
