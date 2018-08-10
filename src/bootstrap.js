@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './style/main.scss';
 
 import Layout from './components/layout';
-import SpellContainer from './components/spellContainer';
+import SpellContainer from './components/spells/spellContainer';
 
 function main() {
   ReactDOM.render(
