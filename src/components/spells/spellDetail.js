@@ -13,7 +13,7 @@ class SpellDetail extends Component {
         }
     }
 
-    displayableClasses(classList) {
+    classListToString(classList) {
         let result = "";
         classList.map((className, index) => {
             result += className.name;
@@ -24,9 +24,36 @@ class SpellDetail extends Component {
         return result;
     }
 
-    displayableComponents(componentList) {
-        
+    componentListToString(componentList) {
+        let result = "";
+        componentList.map((component, index) => {
+            result += component;
+            if (component == "M") {
+                result += ` (${this.state.spell.material})`;
+            }
+            if (index != componentList.length - 1) {
+                result += ", ";
+            }
+        })
+        return result;
     }
+
+    levelToString(level) {
+        let result = level;
+        let lastDigit = level % 10;
+        let lastTwoDigits = level % 100;
+        if (lastDigit == 1 && lastTwoDigits != 11) {
+            result += "st";
+        } else if (lastDigit == 2 && lastTwoDigits != 12) {
+            result += "nd";
+        } else if (lastDigit == 3 && lastTwoDigits != 13) {
+            result += "rd";
+        } else {
+            result += "th"
+        }
+        return result;
+    }
+
 
     componentDidMount() {
         axios.get("http://www.dnd5eapi.co/api/spells/1")
@@ -56,18 +83,20 @@ class SpellDetail extends Component {
             )
         }
 
-        const spell = {...this.state.spell};
+        const spell = { ...this.state.spell };
+
+        console.log(spell);
 
         return (
             <div className="spell-detail">
                 <div className="spell-detail__name">{spell.name}</div>
                 <div className="spell-detail__wrapper">
-                    <div className="spell-detail__wrapper__level">{spell.level} level {spell.school.name}</div>
+                    <div className="spell-detail__wrapper__level">{this.levelToString(spell.level)} level {spell.school.name}</div>
                     <div className="spell-detail__wrapper__cast-time"><b>Casting Time: </b>{spell.casting_time}</div>
                     <div className="spell-detail__wrapper__range"><b>Range: </b>{spell.range}</div>
-                    <div className="spell-detail__wrapper__components"><b>Components: </b></div>
+                    <div className="spell-detail__wrapper__components"><b>Components: </b>{this.componentListToString(spell.components)}</div>
                     <div className="spell-detail__wrapper__duration"><b>Duration: </b>{spell.duration}</div>
-                    <div className="spell-detail__wrapper__classes"><b>Classes: </b>{this.displayableClasses(spell.classes)}</div>
+                    <div className="spell-detail__wrapper__classes"><b>Classes: </b>{this.classListToString(spell.classes)}</div>
                 </div>
                 <div className="spell-detail__desc-wrapper">
                     <div className="spell-detail__desc-wrapper__description">{spell.desc}</div>
