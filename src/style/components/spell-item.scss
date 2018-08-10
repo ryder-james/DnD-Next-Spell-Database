@@ -8,10 +8,15 @@
     border: 0px solid black;
     border-width: 1px 2px;
 
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: [icon-s] 20% [ icon-e name-s] 60% [name-e arrow-s] 20% [arrow-e];
+
     align-items: center;
 
     &__icon {
+        grid-column: icon-s/icon-e;
+
         height: 3rem;
         width: 3rem;
 
@@ -19,11 +24,34 @@
 
         margin: 0px 1.5rem;
         
-        border: 1px solid black;
+        border: 2px solid black;
         border-radius: 100px;
 
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    &__name {
+        grid-column: name-s/name-e;
+    }
+
+    &__arrow {
+        grid-column: arrow-s/arrow-e;
+        justify-self: center;
+
+        font-size: 3rem;
+    }
+}
+
+.active {
+    background: $main-red;
+
+    color: white;
+
+    &__icon {
+        background: white;
+
+        color: black;
     }
 }

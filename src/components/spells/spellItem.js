@@ -37,6 +37,8 @@ class SpellItem extends Component {
             school
         } = this.state.spell;
 
+        const { active } = this.props;
+
         const icons = {
             abjuration: "fas fa-shield-alt",
             conjuration: "fab fa-hornbill",
@@ -79,9 +81,10 @@ class SpellItem extends Component {
 
         return (
             <a onClick={() => console.log({ name }, "detail view clicked")} className="spell-item-wrapper">
-                <div className="spell-item">
-                    <i className={`spell-item__icon ${icon}`} />
+                <div className={`spell-item ${active ? "active" : ""}`}>
+                    <i className={`spell-item__icon  ${active ? "active__icon" : ""} ${icon}`} />
                     <div className="spell-item__name">{name}</div>
+                    {active ? <i className="spell-item__arrow fas fa-caret-right"/> : ""}
                 </div>
             </a>
         );
