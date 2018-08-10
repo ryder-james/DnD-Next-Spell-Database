@@ -38,9 +38,11 @@
 
     &__arrow {
         grid-column: arrow-s/arrow-e;
-        justify-self: center;
+        justify-self: end;
 
         font-size: 3rem;
+
+        margin-right: 0.8rem;
     }
 }
 
