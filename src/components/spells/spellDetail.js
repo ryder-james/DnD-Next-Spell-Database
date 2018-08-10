@@ -76,7 +76,7 @@ class SpellDetail extends Component {
                 <div className="spell-detail">
                     <div className="spell-detail__name">Fetching...</div>
                     <div className="spell-detail__wrapper">
-                        <div className="spell-detail__wrapper__level"> level </div>
+                        <div className="spell-detail__wrapper__level"><i> level </i></div>
                         <div className="spell-detail__wrapper__cast-time"><b>Casting Time: </b></div>
                         <div className="spell-detail__wrapper__range"><b>Range: </b></div>
                         <div className="spell-detail__wrapper__components"><b>Components: </b></div>
@@ -85,7 +85,6 @@ class SpellDetail extends Component {
                     </div>
                     <div className="spell-detail__desc-wrapper">
                         <div className="spell-detail__desc-wrapper__description"></div>
-                        <div className="spell-detail__desc-wrapper__higher-levels"><b>At Higher Levels: </b></div>
                     </div>
                 </div>
             )
