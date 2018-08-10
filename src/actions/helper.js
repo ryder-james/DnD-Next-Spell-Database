@@ -369,7 +369,10 @@ export function fetchHardSpellList() {
 }
 
 export function queryEditor(query) {
-    let result = query.replace(/ [a-z]{1}/gi, toCap => {return toCap.toUpperCase()});
-    result = result.replace(/^[a-z]/i, x => {return x.toUpperCase()})
+    let result = query;
+
+    result = result.replace(/[A-Z]/g, toLower => {return toLower.toLowerCase()});
+    result = result.replace(/ [a-z]{1}/gi, toCap => {return toCap.toUpperCase()});
+    result = result.replace(/^[a-z]/gi, toCap => {return toCap.toUpperCase()});
     return result.replace(/ /g, "+");
 }
