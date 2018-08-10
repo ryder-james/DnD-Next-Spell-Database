@@ -1,5 +1,6 @@
 import {
-    FETCH_SPELLS
+    FETCH_SPELLS,
+    CHANGE_SPELL
 } from './types';
 
 import { 
@@ -30,11 +31,9 @@ export function fetchSpellList(query, endpoint = "spells") {
     }
 }
 
-
-
-// export function fetchSpellList() {
-//     return {
-//         type: FETCH_SPELLS,
-//         payload: fetch("http://dnd5eapi.co/api/spells/", {headers: localStorage.getItem("token")})
-//     }
-// }
+export function changeSelectedSpell(url) {
+    return {
+        type: CHANGE_SPELL,
+        payload: url
+    }
+}

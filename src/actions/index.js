@@ -1,7 +1,9 @@
 import {
-    fetchSpellList
+    fetchSpellList,
+    changeSelectedSpell
 } from './spells';
 
 export {
-    fetchSpellList
+    fetchSpellList,
+    changeSelectedSpell
 }
