@@ -2,6 +2,8 @@
     grid-column: detail-s/detail-e;
     grid-row: detail-s/detail-e;
 
+    height: 70.2rem;
+
     font-family: $sub-font;
     text-align: right;
 
@@ -9,13 +11,13 @@
     border-left: none;
 
     display: grid;
-    grid-template-rows: [name-s] 5rem [name-e casting-s] 15rem [casting-e desc-s] 1fr [desc-e];
+    grid-template-rows: [s name-s] 5rem [name-e casting-s] 15rem [casting-e desc-s] 1fr [desc-e e];
     justify-content: end;
 
     &__name {
         width: 100%;
 
-        font-size:4rem;
+        font-size: 4rem;
         font-family: $main-font;
 
         border-bottom: 2px solid black;
@@ -29,6 +31,21 @@
     }
 
     &__desc-wrapper {
-        font-size: 3rem;
+        font-size: 2rem;
+
+        overflow: auto;
     }
+}
+
+.spell-detail-none {
+    grid-column: detail-s/detail-e;
+    grid-row: detail-s/detail-e;
+    justify-self: center;
+    align-self: center;
+
+    color: gray;
+    font-size: 5rem;
+    font-family: $main-font;
+
+    text-align: center;
 }
