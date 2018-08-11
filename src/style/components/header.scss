@@ -11,7 +11,7 @@
     align-items: center;
 
     &__icon,
-    &__search {
+    &__search-wrapper {
         margin: 0.5rem 0 0.5rem 1rem;
     }
 
@@ -31,19 +31,24 @@
         align-items: center;
     }
 
-    &__search {
+    &__search-wrapper {
         height: 2.5rem;
         width: 30%;
 
-        font-size: 2rem;
-        font-family: $main-font;
+        &__search {
+            height: 100%;
+            width: 100%;
 
-        border: 0.1rem solid black;
-        border-radius: 0.3rem;
+            font-size: 2rem;
+            font-family: $main-font;
 
-        padding: 0.5rem;
+            border: 0.1rem solid black;
+            border-radius: 0.3rem;
 
-        display: flex;
-        justify-content: center;
+            padding: 0.5rem;
+
+            display: flex;
+            justify-content: center;
+        }
     }
 }
