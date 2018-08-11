@@ -26,6 +26,8 @@
         font-family: $main-font;
 
         border-bottom: 2px solid black;
+
+        overflow: hidden;
     }
 
     &__wrapper {
@@ -33,6 +35,8 @@
         font-family: $sub-font;
 
         border-bottom: 2px solid black;
+
+        overflow: auto;
     }
 
     &__desc-wrapper {
