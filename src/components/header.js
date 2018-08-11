@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+
 class Header extends Component {
     constructor() {
         super();
@@ -7,6 +10,8 @@ class Header extends Component {
         this.state = {
             searchValue: ""
         }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e) {
@@ -14,8 +19,8 @@ class Header extends Component {
     }
 
     handleSubmit(e) {
+        this.props.changeSearchQuery(this.state.searchValue);
         e.preventDefault();
-        console.log("trying to search", this.state.searchValue);
     }
 
     render() {
@@ -23,7 +28,7 @@ class Header extends Component {
             <div className="header">
                 {/* <img className="header__img" src="https://i.imgur.com/k7jAoH3.png"/> */}
                 <i className="header__icon fab fa-d-and-d"/>
-                <form className="header__search-wrapper" onSubmit={() => this.handleSubmit()}>
+                <form className="header__search-wrapper" onSubmit={this.handleSubmit}>
                     <input 
                         className="header__search-wrapper__search" 
                         type="text" 
@@ -38,4 +43,4 @@ class Header extends Component {
     }
 }
 
-export default Header
+export default connect(null, actions)(Header)
