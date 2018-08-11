@@ -15,7 +15,6 @@ export function fetchSpellList(query, endpoint = "spells") {
     query ? query = queryEditor(query) : "";
 
     const url = `http://www.dnd5eapi.co/api/${endpoint}/${query ? `?name=${query}` : ""}`;
-    console.log(url);
 
     return function (dispatch) {
         axios.get(url)
