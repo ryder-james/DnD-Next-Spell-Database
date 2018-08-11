@@ -36,7 +36,7 @@ class SpellContainer extends Component {
                 </div>
                 <ScrollButton isScrollUp={false} callback={() => console.log("Scrolling down")}/>
             </div>,
-            <SpellDetail selectedSpell={this.props.selectedSpell} key={this.props.selectedSpell.url}/>
+            <SpellDetail selectedSpell={this.props.selectedSpell} key={this.props.selectedSpell ? this.props.selectedSpell.url : "no-spell"}/>
         ];
     }
 }
