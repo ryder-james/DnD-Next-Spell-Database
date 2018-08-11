@@ -8,7 +8,6 @@
     text-align: right;
 
     border: 2px solid black;
-    border-left: none;
 
     display: grid;
     grid-template-rows: [s name-s] 5rem [name-e casting-s] 15rem [casting-e desc-s] 1fr [desc-e e];
