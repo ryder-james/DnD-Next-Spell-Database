@@ -1,9 +1,11 @@
 import {
     fetchSpellList,
-    changeSelectedSpell
+    changeSelectedSpell,
+    changeSearchQuery
 } from './spells';
 
 export {
     fetchSpellList,
-    changeSelectedSpell
+    changeSelectedSpell,
+    changeSearchQuery
 }

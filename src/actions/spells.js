@@ -1,6 +1,7 @@
 import {
     FETCH_SPELLS,
-    CHANGE_SPELL
+    CHANGE_SPELL,
+    CHANGE_QUERY
 } from './types';
 
 import { 
@@ -35,5 +36,12 @@ export function changeSelectedSpell(spell) {
     return {
         type: CHANGE_SPELL,
         payload: spell
+    }
+}
+
+export function changeSearchQuery(searchQuery) {
+    return {
+        type: CHANGE_QUERY,
+        payload: searchQuery
     }
 }
