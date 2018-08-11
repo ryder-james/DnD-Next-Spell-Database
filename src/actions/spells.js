@@ -31,9 +31,9 @@ export function fetchSpellList(query, endpoint = "spells") {
     }
 }
 
-export function changeSelectedSpell(url) {
+export function changeSelectedSpell(spell) {
     return {
         type: CHANGE_SPELL,
-        payload: url
+        payload: spell
     }
 }

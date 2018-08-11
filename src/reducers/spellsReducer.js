@@ -17,10 +17,10 @@ export default function(state = INIT_STATE, action) {
                 spellList
             }
         case CHANGE_SPELL:
-            const url = action.payload;
+            const spell = action.payload;
             return {
                 ...state,
-                selectedSpell: url
+                selectedSpell: spell
             }
         default:
             return state;

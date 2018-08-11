@@ -35,7 +35,7 @@ class SpellItem extends Component {
 
         let active = false
 
-        if (this.props.url == this.props.selectedSpell) {
+        if (this.props.url == this.props.selectedSpell.url) {
             active = true;
         }
 
@@ -85,7 +85,7 @@ class SpellItem extends Component {
         }
 
         return (
-            <a onClick={() => this.props.changeSelectedSpell(this.props.url)} className="spell-item-wrapper">
+            <a onClick={() => this.props.changeSelectedSpell(this.state.spell)} className="spell-item-wrapper">
                 <div className={`spell-item ${active ? "active" : ""}`}>
                     <i className={`spell-item__icon  ${active ? "active__icon" : ""} ${icon}`} />
                     <div className="spell-item__name">{name}</div>

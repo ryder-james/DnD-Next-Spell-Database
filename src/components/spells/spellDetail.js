@@ -3,14 +3,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class SpellDetail extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            spell: null
-        }
-    }
-
     classListToString(classList) {
         let result = "";
         classList.map((className, index) => {
@@ -27,7 +19,7 @@ class SpellDetail extends Component {
         componentList.map((component, index) => {
             result += component;
             if (component == "M") {
-                result += ` (${this.state.spell.material})`;
+                result += ` (${this.props.selectedSpell.material})`;
             }
             if (index != componentList.length - 1) {
                 result += ", ";
@@ -52,18 +44,6 @@ class SpellDetail extends Component {
         return result;
     }
 
-
-    componentDidMount() {
-        if (!this.props.selectedSpell) {
-            return;
-        }
-
-        axios.get(this.props.selectedSpell)
-            .then(response => {
-                this.setState({ spell: { ...response.data } })
-            })
-    }
-
     render() {
         if (!this.props.selectedSpell) {
             return (
@@ -71,26 +51,7 @@ class SpellDetail extends Component {
             )
         }
 
-        if (!this.state.spell) {
-            return (
-                <div className="spell-detail">
-                    <div className="spell-detail__name">Fetching...</div>
-                    <div className="spell-detail__wrapper">
-                        <div className="spell-detail__wrapper__level"><i> level </i></div>
-                        <div className="spell-detail__wrapper__cast-time"><b>Casting Time: </b></div>
-                        <div className="spell-detail__wrapper__range"><b>Range: </b></div>
-                        <div className="spell-detail__wrapper__components"><b>Components: </b></div>
-                        <div className="spell-detail__wrapper__duration"><b>Duration: </b></div>
-                        <div className="spell-detail__wrapper__classes"><b>Classes: </b></div>
-                    </div>
-                    <div className="spell-detail__desc-wrapper">
-                        <div className="spell-detail__desc-wrapper__description"></div>
-                    </div>
-                </div>
-            )
-        }
-
-        const spell = { ...this.state.spell };
+        const spell = { ...this.props.selectedSpell };
 
         return (
             <div className="spell-detail">
