@@ -14,6 +14,12 @@
     grid-template-rows: [s name-s] 5rem [name-e casting-s] 15rem [casting-e desc-s] 1fr [desc-e e];
     justify-content: end;
 
+    &__name,
+    &__wrapper,
+    &__desc-wrapper {
+        padding: 0px 0.5rem;
+    }
+
     &__name {
         width: 100%;
 
