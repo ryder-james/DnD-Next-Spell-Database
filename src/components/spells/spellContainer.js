@@ -29,6 +29,12 @@ class SpellContainer extends Component {
         this.props.fetchSpellList();
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.searchQuery !== this.props.searchQuery) {
+            this.props.fetchSpellList(nextProps.searchQuery);
+        }
+    }
+
     render() {
         return [
             <div className="spell-container">
@@ -46,11 +52,12 @@ class SpellContainer extends Component {
 }
 
 function mapStateToProps(state) {
-    const { spellList, selectedSpell } = state.spellList;
+    const { spellList, selectedSpell, searchQuery } = state.spellList;
 
     return {
         spellList,
-        selectedSpell
+        selectedSpell,
+        searchQuery
     }
 }
 

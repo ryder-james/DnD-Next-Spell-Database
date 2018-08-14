@@ -14,13 +14,23 @@ class SpellItem extends Component {
     }
 
     componentDidMount() {
-        axios.get(this.props.url)
+        this.fetchSpell(this.props.url);
+    }
+
+    fetchSpell(url) {
+        axios.get(url)
             .then(response => {
-                this.setState({ spell: {...response.data} });
+                this.setState({ spell: { ...response.data } });
             })
             .catch(err => {
                 console.log(err);
-            })
+            });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.url !== this.props.url) {
+            this.fetchSpell(nextProps.url);
+        }
     }
 
     render() {

@@ -19,6 +19,7 @@ class Header extends Component {
     }
 
     handleSubmit(e) {
+        this.props.changeSelectedSpell(null);
         this.props.changeSearchQuery(this.state.searchValue);
         e.preventDefault();
     }
