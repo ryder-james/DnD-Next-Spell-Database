@@ -13,14 +13,17 @@ const scroll = Scroll.animateScroll;
 
 class SpellContainer extends Component {
     getSpellArray() {
-        if (this.props.spellList.length == 0) {
-            return [];
-        }
-
         const spellArray = [];
-        this.props.spellList.map((spellItem, index) => {
-            spellArray.push(<SpellItem url={spellItem.url} key={index}/>);
-        })
+
+        if (this.props.spellList.length == 0) {
+            for (let i = 0; i < 14; i++) {
+                spellArray.push(<SpellItem spell={null} key={i} />);
+            }
+        } else {
+            this.props.spellList.map((spellItem) => {
+                spellArray.push(<SpellItem spell={spellItem} key={spellItem._id} />);
+            })
+        }
 
         return spellArray;
     }
@@ -38,15 +41,15 @@ class SpellContainer extends Component {
     render() {
         return [
             <div className="spell-container">
-                <ScrollButton isScrollUp={true} callback={() => scroll.scrollMore(-650, {containerId: "list"})}/>
+                <ScrollButton isScrollUp={true} callback={() => scroll.scrollMore(-650, { containerId: "list" })} />
                 <Element className="spell-container__list" id="list">
                     {
                         this.getSpellArray()
                     }
                 </Element>
-                <ScrollButton isScrollUp={false} callback={() => scroll.scrollMore(650, {containerId: "list"})}/>
+                <ScrollButton isScrollUp={false} callback={() => scroll.scrollMore(650, { containerId: "list" })} />
             </div>,
-            <SpellDetail selectedSpell={this.props.selectedSpell} key={this.props.selectedSpell ? this.props.selectedSpell.url : "no-spell"}/>
+            <SpellDetail selectedSpell={this.props.selectedSpell} key={this.props.selectedSpell ? this.props.selectedSpell.url : "no-spell"} />
         ];
     }
 }

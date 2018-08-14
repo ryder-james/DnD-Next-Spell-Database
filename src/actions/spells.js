@@ -19,10 +19,20 @@ export function fetchSpellList(query, endpoint = "spells") {
     return function (dispatch) {
         axios.get(url)
             .then(response => {
-                dispatch({
-                    type: FETCH_SPELLS,
-                    payload: response.data
-                })
+                const unfetchedSpells = response.data.results;
+                const result = [];
+                unfetchedSpells.map((spell, index) => {
+                    axios.get(spell.url)
+                        .then (response => {
+                            result.push(response.data);
+                            if (index == unfetchedSpells.length - 1) {
+                                dispatch({
+                                    type: FETCH_SPELLS,
+                                    payload: result
+                                })
+                            }
+                        })
+                }) 
             })
             .catch(err => {
                 console.log(err);

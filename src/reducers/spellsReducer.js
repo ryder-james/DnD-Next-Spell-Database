@@ -13,7 +13,12 @@ const INIT_STATE = {
 export default function(state = INIT_STATE, action) {
     switch (action.type) {
         case FETCH_SPELLS:
-            const spellList = action.payload.results;
+            const spellList = action.payload;
+
+            spellList.sort((a, b) => {
+                return a.index - b.index;
+            })
+
             return {
                 ...state,
                 spellList

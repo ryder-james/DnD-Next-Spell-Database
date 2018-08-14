@@ -2,39 +2,10 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import axios from 'axios';
 
 class SpellItem extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            spell: null
-        }
-    }
-
-    componentDidMount() {
-        this.fetchSpell(this.props.url);
-    }
-
-    fetchSpell(url) {
-        axios.get(url)
-            .then(response => {
-                this.setState({ spell: { ...response.data } });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.url !== this.props.url) {
-            this.fetchSpell(nextProps.url);
-        }
-    }
-
     render() {
-        if (!this.state.spell) {
+        if (!this.props.spell) {
             return (
                 <div className="spell-item">
                     <i className={`spell-item__icon fas fa-question`} />
@@ -45,14 +16,15 @@ class SpellItem extends Component {
 
         let active = false;
 
-        if (this.props.selectedSpell && (this.props.url == this.props.selectedSpell.url)) {
+        if (this.props.selectedSpell && (this.props.spell._id == this.props.selectedSpell._id)) {
             active = true;
         }
 
         const {
             name,
-            school
-        } = this.state.spell;
+            school,
+            index
+        } = this.props.spell;
 
         const icons = {
             abjuration: "fas fa-shield-alt",
@@ -96,10 +68,11 @@ class SpellItem extends Component {
 
         return (
             <a onClick={() => {
+                    console.log(index);
                     if (active) {
                         this.props.changeSelectedSpell(null);
                     } else {
-                        this.props.changeSelectedSpell(this.state.spell)
+                        this.props.changeSelectedSpell(this.props.spell)
                     }
                 }} className="spell-item-wrapper">
                 <div className={`spell-item ${active ? "active" : ""}`}>
@@ -109,7 +82,6 @@ class SpellItem extends Component {
                 </div>
             </a>
         );
-
     }
 }
 
