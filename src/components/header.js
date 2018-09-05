@@ -18,6 +18,8 @@ class Header extends Component {
 
     handleChange(e) {
         this.setState({ searchValue: e.target.value });
+        this.props.changeSelectedSpell(null);
+        this.props.searchSpellList(this.state.searchValue, searchDomains.name);
     }
 
     handleSubmit(e) {
