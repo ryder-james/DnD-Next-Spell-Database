@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-import { searchDomains } from '../actions/helper';
+import { searchDomains, queryEditor } from '../actions/helper';
 
 class Header extends Component {
     constructor() {
@@ -12,20 +12,18 @@ class Header extends Component {
         this.state = {
             searchValue: ""
         }
-
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e) {
         this.setState({ searchValue: e.target.value });
-        this.props.changeSelectedSpell(null);
-        this.props.searchSpellList(this.state.searchValue, searchDomains.name);
-    }
 
-    handleSubmit(e) {
-        this.props.changeSelectedSpell(null);
-        this.props.searchSpellList(this.state.searchValue, searchDomains.name);
-        e.preventDefault();
+        const spell = this.props.selectedSpell;
+
+        if (spell && !spell.name.includes(queryEditor(e.target.value))) {
+            this.props.changeSelectedSpell(null);
+        }
+
+        this.props.searchSpellList(e.target.value, searchDomains.name);
     }
 
     render() {
@@ -33,7 +31,7 @@ class Header extends Component {
             <div className="header">
                 {/* <img className="header__img" src="https://i.imgur.com/k7jAoH3.png"/> */}
                 <i className="header__icon fab fa-d-and-d"/>
-                <form className="header__search-wrapper" onSubmit={this.handleSubmit}>
+                <form className="header__search-wrapper">
                     <input 
                         className="header__search-wrapper__search" 
                         type="text" 
@@ -48,4 +46,12 @@ class Header extends Component {
     }
 }
 
-export default connect(null, actions)(Header)
+function mapStateToProps(state) {
+    const { selectedSpell } = state.spellList;
+
+    return {
+        selectedSpell
+    }
+}
+
+export default connect(mapStateToProps, actions)(Header)
