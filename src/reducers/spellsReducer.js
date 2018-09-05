@@ -1,28 +1,59 @@
 import {
     FETCH_SPELLS,
+    SEARCH_SPELLS,
     CHANGE_SPELL,
     CHANGE_QUERY
 } from '../actions/types'
 
+import { searchDomains, queryEditor } from '../actions/helper';
+
 const INIT_STATE = {
     spellList: [],
     selectedSpell: null,
-    searchQuery: ""
+    searchQuery: "",
+    staticSpellList: []
 }
 
 export default function(state = INIT_STATE, action) {
     switch (action.type) {
         case FETCH_SPELLS:
-            const spellList = action.payload;
+            var spellList = action.payload;
 
             spellList.sort((a, b) => {
                 return a.index - b.index;
-            })
+            });
+
+            const staticSpellList = spellList;
+
+            localStorage.setItem("staticSpellList", JSON.stringify(staticSpellList));
+
+            return {
+                ...state,
+                spellList,
+                staticSpellList
+            }
+
+        case SEARCH_SPELLS:
+            const searchData = action.payload;
+            const results = [];
+
+            switch (searchData.domain) {
+                case searchDomains.name:
+                    action.spells.map(spell => {
+                        if (spell.name.includes(queryEditor(searchData.query))) {
+                            results.push(spell);
+                        }
+                    });
+                    break;
+            }
+
+            var spellList = results;
 
             return {
                 ...state,
                 spellList
             }
+
         case CHANGE_SPELL:
             const spell = action.payload;
             return {

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
+import { searchDomains } from '../actions/helper';
+
 class Header extends Component {
     constructor() {
         super();
@@ -20,7 +22,7 @@ class Header extends Component {
 
     handleSubmit(e) {
         this.props.changeSelectedSpell(null);
-        this.props.changeSearchQuery(this.state.searchValue);
+        this.props.searchSpellList(this.state.searchValue, searchDomains.name);
         e.preventDefault();
     }
 

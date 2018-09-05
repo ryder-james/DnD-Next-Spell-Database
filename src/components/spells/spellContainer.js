@@ -7,6 +7,7 @@ import * as actions from '../../actions';
 import SpellItem from './spellItem';
 import ScrollButton from '../scrollButton';
 import SpellDetail from './spellDetail';
+import { searchDomains } from '../../actions/helper';
 
 const Element = Scroll.Element;
 const scroll = Scroll.animateScroll;
@@ -26,16 +27,6 @@ class SpellContainer extends Component {
         }
 
         return spellArray;
-    }
-
-    componentDidMount() {
-        this.props.fetchSpellList();
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.searchQuery !== this.props.searchQuery) {
-            this.props.fetchSpellList(nextProps.searchQuery);
-        }
     }
 
     render() {

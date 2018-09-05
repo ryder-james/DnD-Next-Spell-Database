@@ -1,21 +1,28 @@
 import {
     FETCH_SPELLS,
+    SEARCH_SPELLS,
     CHANGE_SPELL,
-    CHANGE_QUERY,
-	PROXY_URL
+    CHANGE_QUERY
 } from './types';
 
 import { 
     fetchHardSpellList,
-    queryEditor
+    PROXY_URL
 } from './helper'
 
 import axios from 'axios';
 
-export function fetchSpellList(query, endpoint = "spells") {
-    query ? query = queryEditor(query) : "";
+export function fetchSpellList() {
+    const url = PROXY_URL + 'http://www.dnd5eapi.co/api/spells';
 
-    const url = PROXY_URL + `http://www.dnd5eapi.co/api/${endpoint}/${query ? `?name=${query}` : ""}`;
+    const storedSpells = JSON.parse(localStorage.getItem("staticSpellList"));
+
+    if (storedSpells && storedSpells.length != 0) {
+        return {
+            type: FETCH_SPELLS,
+            payload: storedSpells
+        }
+    }
 
     return function (dispatch) {
         axios.get(url)
@@ -36,9 +43,24 @@ export function fetchSpellList(query, endpoint = "spells") {
                 }) 
             })
             .catch(err => {
-                console.log(err);
+                console.log(err, "fetching hard spell list");
                 dispatch(fetchHardSpellList());
             })
+    }
+}
+
+export function searchSpellList(query, domain) {
+    return (dispatch, getState) => {
+        const { staticSpellList } = getState().spellList;
+
+        dispatch ({
+            type: SEARCH_SPELLS,
+            spells: staticSpellList,
+            payload: {
+                query,
+                domain
+            }
+        })
     }
 }
 

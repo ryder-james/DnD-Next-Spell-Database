@@ -1,5 +1,17 @@
 import { FETCH_SPELLS } from './types';
 
+export const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+
+export const searchDomains = {
+    name: "name",
+    description: "desc",
+    ritual: "ritual",
+    level: "level",
+    school: "school",
+    classes: "classes",
+    subclasses: "subclasses"
+}
+
 export function fetchHardSpellList() {
     const response = {
         data: [

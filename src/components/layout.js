@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import Header from './header';
 
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+
 class Layout extends Component {
+    componentDidMount() {
+        this.props.fetchSpellList();
+    }
+
     render() {
         return (
             <div className="layout">
@@ -12,4 +19,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+export default connect(null, actions)(Layout);
