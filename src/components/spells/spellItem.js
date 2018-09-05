@@ -9,7 +9,7 @@ class SpellItem extends Component {
             return (
                 <div className="spell-item">
                     <i className={`spell-item__icon fas fa-question`} />
-                    <div className="spell-item__name">Fetching spell...</div>
+                    <div className="spell-item__name">Fetching spell list...</div>
                 </div>
             )
         }
@@ -68,7 +68,6 @@ class SpellItem extends Component {
 
         return (
             <a onClick={() => {
-                    console.log(index);
                     if (active) {
                         this.props.changeSelectedSpell(null);
                     } else {
