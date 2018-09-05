@@ -47,6 +47,10 @@ export default function(state = INIT_STATE, action) {
                     break;
             }
 
+            if (results.length == 0) {
+                results.push("no-result")
+            }
+
             var spellList = results;
 
             return {

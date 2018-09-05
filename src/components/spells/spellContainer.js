@@ -7,12 +7,19 @@ import * as actions from '../../actions';
 import SpellItem from './spellItem';
 import ScrollButton from '../scrollButton';
 import SpellDetail from './spellDetail';
-import { searchDomains } from '../../actions/helper';
 
 const Element = Scroll.Element;
 const scroll = Scroll.animateScroll;
 
 class SpellContainer extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            noResult: false
+        }
+    }
+
     getSpellArray() {
         const spellArray = [];
 
@@ -29,13 +36,17 @@ class SpellContainer extends Component {
         return spellArray;
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({ noResult: nextProps.spellList[0] == "no-result" });
+    }
+
     render() {
         return [
             <div className="spell-container">
                 <ScrollButton isScrollUp={true} callback={() => scroll.scrollMore(-650, { containerId: "list" })} />
                 <Element className="spell-container__list" id="list">
                     {
-                        this.getSpellArray()
+                        this.state.noResult ? <div className="spell-container__no-result">No results</div> : this.getSpellArray()
                     }
                 </Element>
                 <ScrollButton isScrollUp={false} callback={() => scroll.scrollMore(650, { containerId: "list" })} />
@@ -46,12 +57,11 @@ class SpellContainer extends Component {
 }
 
 function mapStateToProps(state) {
-    const { spellList, selectedSpell, searchQuery } = state.spellList;
+    const { spellList, selectedSpell } = state.spellList;
 
     return {
         spellList,
-        selectedSpell,
-        searchQuery
+        selectedSpell
     }
 }
 
