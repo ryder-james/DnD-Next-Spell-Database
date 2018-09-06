@@ -43,13 +43,13 @@ class SpellContainer extends Component {
     render() {
         return [
             <div className="spell-container">
-                <ScrollButton isScrollUp={true} callback={() => scroll.scrollMore(-650, { containerId: "list" })} />
+                <ScrollButton isScrollUp={true} callback={() => scroll.scrollMore(-650, { containerId: "list", duration: 700 })} />
                 <Element className="spell-container__list" id="list">
                     {
                         this.state.noResult ? <div className="spell-container__no-result">No results</div> : this.getSpellArray()
                     }
                 </Element>
-                <ScrollButton isScrollUp={false} callback={() => scroll.scrollMore(650, { containerId: "list" })} />
+                <ScrollButton isScrollUp={false} callback={() => scroll.scrollMore(650, { containerId: "list", duration: 700 })} />
             </div>,
             <SpellDetail selectedSpell={this.props.selectedSpell} key={this.props.selectedSpell ? this.props.selectedSpell.url : "no-spell"} />
         ];
