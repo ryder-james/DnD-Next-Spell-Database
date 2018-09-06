@@ -36,11 +36,12 @@ export default function(state = INIT_STATE, action) {
         case SEARCH_SPELLS:
             const searchData = action.payload;
             const results = [];
+            const searchQuery = queryEditor(searchData.query);
 
             switch (searchData.domain) {
                 case searchDomains.name:
                     action.spells.map(spell => {
-                        if (spell.name.includes(queryEditor(searchData.query))) {
+                        if (spell.name.includes(searchQuery)) {
                             results.push(spell);
                         }
                     });
