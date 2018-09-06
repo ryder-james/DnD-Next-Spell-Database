@@ -1,9 +1,10 @@
 @import 'var';
 @import 'base';
 
-@import './components/layout';
 @import './components/header';
+@import './components/layout';
 @import './components/spell-container';
 @import './components/spell-item';
 @import './components/spell-detail';
 @import './components/scroll-button';
+@import './components/multi-select';

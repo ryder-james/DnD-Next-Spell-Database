@@ -5,13 +5,34 @@ import {
     CHANGE_QUERY
 } from '../actions/types'
 
-import { searchDomains, queryEditor } from '../actions/helper';
+import { queryEditor } from '../actions/helper';
+import { searchDomains } from '../constants';
 
 const INIT_STATE = {
     spellList: [],
     selectedSpell: null,
     searchQuery: "",
     staticSpellList: []
+}
+
+const filter = (spells, searchTerms) => {
+    const results = [];
+    const skipList = [];
+
+    spells.map(spell => {
+        spell.classes.forEach(className => {
+            searchTerms.forEach(searchClassName => {
+                if (!skipList.includes(spell.index)) {
+                    if (className.name == searchClassName.label) {
+                        results.push(spell);
+                        skipList.push(spell.index);
+                    }
+                }
+            });
+        });
+    });
+
+    return results;
 }
 
 export default function(state = INIT_STATE, action) {
@@ -35,16 +56,27 @@ export default function(state = INIT_STATE, action) {
 
         case SEARCH_SPELLS:
             const searchData = action.payload;
-            const results = [];
-            const searchQuery = queryEditor(searchData.query);
+            let results = [];
+            let searchQuery = searchData.query;
 
             switch (searchData.domain) {
                 case searchDomains.name:
+                    searchQuery = queryEditor(searchQuery);
                     action.spells.map(spell => {
                         if (spell.name.includes(searchQuery)) {
                             results.push(spell);
                         }
                     });
+                    break;
+                case searchDomains.classes:
+                    if (searchQuery.length == 0) {
+                        var spellList = action.spells;
+                        return {
+                            ...state,
+                            spellList
+                        }
+                    }
+                    results = filter(action.spells, searchQuery);
                     break;
             }
 

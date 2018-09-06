@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-import { searchDomains, queryEditor } from '../actions/helper';
+import { queryEditor } from '../actions/helper';
+import DropdownMenu from './dropdown';
+
+import { classList, searchDomains } from '../constants';
 
 class Header extends Component {
     constructor() {
@@ -40,6 +43,13 @@ class Header extends Component {
                         onChange={this.handleChange.bind(this)}
                     />
                 </form>
+                <DropdownMenu
+                    name="class-filter"
+                    search={this.props.searchSpellList}
+                    options={classList}
+                    searchDomain={searchDomains.classes}
+                    placeholder="Class select"
+                />
             </div>
         );
     }
