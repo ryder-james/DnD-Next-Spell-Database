@@ -1,7 +1,8 @@
 import {
     FETCH_SPELLS,
     CHANGE_SPELL,
-    CHANGE_QUERY
+    CHANGE_QUERY,
+	PROXY_URL
 } from './types';
 
 import { 
@@ -14,7 +15,7 @@ import axios from 'axios';
 export function fetchSpellList(query, endpoint = "spells") {
     query ? query = queryEditor(query) : "";
 
-    const url = `http://www.dnd5eapi.co/api/${endpoint}/${query ? `?name=${query}` : ""}`;
+    const url = PROXY_URL + `http://www.dnd5eapi.co/api/${endpoint}/${query ? `?name=${query}` : ""}`;
 
     return function (dispatch) {
         axios.get(url)
