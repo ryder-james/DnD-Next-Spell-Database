@@ -40,7 +40,6 @@ class Header extends Component {
                         onChange={this.handleChange.bind(this)}
                     />
                 </form>
-                {this.props.children}
             </div>
         );
     }
